@@ -5,6 +5,6 @@
     3. Run your optional alignment algorirht
     4. Wait...
 # How to use .py file:
-    1. Start .py file in console
-    2. Write in console "python3 (or python) 'filename'.py -i 'path to input file'.fas -o 'output name'
+    1. Start main.py file in console
+    2. Write in console "python3 (or python) 'filename'.py -i 'path to input file'.fas -o 'output name -al 'alignment method that you prefer''
     3. Wait...
