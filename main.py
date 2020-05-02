@@ -12,8 +12,7 @@ FASTA_input = open(args.input, 'r')
 Sequences = FASTA_input.read()
 FASTA_input.close()
 
-Seq = []
-Seq_inner = []
+Seq, Seq_inner = [], []
 Seq = Sequences.split('>')
 for i in Seq:
     Seq_inner.append(i.split('\n'))
