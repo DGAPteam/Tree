@@ -100,11 +100,13 @@ def ALIGN_NW (x, y):
             ALIGNy.append('-')
 
     x_end, y_end = '', ''
-    for i in range(len(ALIGNx)):
+
+    length = len(ALIGNx) if len(ALIGNx) < len(ALIGNy) else len(ALIGNy)
+    for i in range(length):
         x_end += ALIGNx[i]
-    for j in range(len(ALIGNy)):
+    for j in range(length):
         y_end += ALIGNy[j]
-            
+     
     return distance(x_end, y_end), x_end, y_end
 
 def FASTA(x, y):
@@ -186,9 +188,11 @@ def FASTA(x, y):
             j += 1
 
     x_end, y_end = '', ''
-    for i in range(len(ALIGNx)):
+
+    length = len(ALIGNx) if len(ALIGNx) < len(ALIGNy) else len(ALIGNy)
+    for i in range(length):
         x_end += ALIGNx[i]
-    for j in range(len(ALIGNy)):
+    for j in range(length):
         y_end += ALIGNy[j]
                    
     return distance(x_end, y_end), x_end, y_end
@@ -250,9 +254,16 @@ def BLAST (x, y, w):
             ALIGNx += substring_in_x            
             ALIGNy += substring_in_y
             j = right_end
-    if final < N:
-        for i in range(final+1, len(x)):
-            ALIGNx += str(x[i])
-            ALIGNy += '-'    
-    return distance(ALIGNx, ALIGNy), ALIGNx, ALIGNy
+  #  if final < N:
+  #      for i in range(final+1, len(x)):
+  #          ALIGNx += str(x[i])
+  #          ALIGNy += '-'    
+
+    length = len(ALIGNx) if len(ALIGNx) < len(ALIGNy) else len(ALIGNy)
+    for i in range(length):
+        x_end += ALIGNx[i]
+    for j in range(length):
+        y_end += ALIGNy[j]
+
+    return distance(x_end, y_end), x_end, y_end
 
