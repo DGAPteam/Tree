@@ -1,4 +1,4 @@
-# Tree
+# Alignment
 # How to use .ipynb file:
     1. Start project.ipynb in Jupyter Notebook
     2. Chose your file and write it in filename place
@@ -9,3 +9,5 @@
     2. Write in console "python3 (or python) 'filename'.py -i 'path to input file'.fas -o 'output name' 
        -al 'alignment method that you prefer'
     3. Wait...
+# Tree
+    1. Use ipynb file
