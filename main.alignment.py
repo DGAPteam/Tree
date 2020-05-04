@@ -35,7 +35,13 @@ if args.alignment == 'n-w':
     output_name = args.output + '.Needleman-Wunch'
     Out = open(output_name, 'w')
     STRAX = al.ALIGN_NW(seq,seqi)
+    Out.write(name_seq)
+    Out.write('\n')
+    Out.write(name_seqi)
+    Out.write('\n')
     Out.write(str(STRAX[0]))
+    Out.write('\n')
+    Out.write('>')
     Out.write('\n')
     if(len(STRAX[1]) > 60):
         for i in range(1, len(STRAX)):
@@ -56,7 +62,13 @@ if args.alignment == 'fasta':
     output_name = args.output + '.Fasta'
     Out = open(output_name, 'w')
     STRAX = al.FASTA(seqi,seq)
+    Out.write(name_seq)
+    Out.write('\n')
+    Out.write(name_seqi)
+    Out.write('\n')
     Out.write(str(STRAX[0]))
+    Out.write('\n')
+    Out.write('>')
     Out.write('\n')
     if(len(STRAX[1]) > 60):
         for i in range(1, len(STRAX)):
@@ -77,7 +89,13 @@ if args.alignment == 'blast':
     output_name = args.output + '.BLAST'
     Out = open(output_name, 'w')
     STRAX = al.BLAST(seqi, seq, 5)
+    Out.write(name_seq)
+    Out.write('\n')
+    Out.write(name_seqi)
+    Out.write('\n')
     Out.write(str(STRAX[0]))
+    Out.write('\n')
+    Out.write('>')
     Out.write('\n')
     if(len(STRAX[1]) > 60):
         for i in range(1, len(STRAX)):
