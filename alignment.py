@@ -332,7 +332,7 @@ def BLAST (x, y, w):
     if (len(y_end) < len(x_end)):
         while(len(y_end) < len(x_end)):
             y_end += '-'
-    return al.distance(x_end, y_end), x_end, y_end, k, l
+    return distance(x_end, y_end), x_end, y_end, k, l
 
 def GenSearch(x):
     start, end = [], []
