@@ -402,4 +402,24 @@ def GenSearch(x):
             genes.append(s)
     return genes
             
-    
+def NW_genes(seq, seqi, output_name):
+    #output_name = 'output.Needleman-Wunch(Genes)'
+    Out = open(output_name, 'w')
+    genes1, genes2 = GenSearch(seq), GenSearch(seqi)
+    Out.write(name_seq + '\n' + name_seqi + '\n')
+    for i in genes1:
+        for j in genes2:
+            #Для примера
+            s1, s2 = i, j
+            if (len(s1) > len(s2)):
+                while(len(s1) > len(s2)):
+                    s2 += '-'
+            if (len(s2) > len(s1)):
+                while(len(s2) > len(s1)):
+                    s1 += '-'
+            _distance = distance(s1, s2)
+            align = ALIGN_NW(j, i) if len(j) < len(i) else ALIGN_NW(i, j)
+            Out.write("длины строк " + str(len(i)) + ' ' + str(len(j)) + ' ' + str(len(align[1])) + ' ' + str(len(align[2])))
+            Out.write('\n' + str(_distance/len(s1)) + '\n' + str(hamming_distance_nw(s1,s2)/len(s1)) + '\n' + '\n')
+            Out.write(str(hamming_distance_nw(align[1],align[2])/len(align[1])) + '\n' + str(align[0]/len(align[1])) + '\n' + str(align[1]) + '\n' + str(align[2]) + '\n')
+    Out.close()
