@@ -7,13 +7,16 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QPixmap, QImage, QPalette, QBrush
+from PyQt5.QtCore import QSize, Qt, QEvent
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(709, 386)
+        
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidg`et")
+        self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
         self.listWidget = QtWidgets.QListWidget(self.centralwidget)
@@ -42,7 +45,21 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
+        
+        
+     #   oImage = QImage("/home/emil/Desktop/OOP/Project/картинка.jpg")
+      #  sImage = oImage.scaled(QSize(self.window_height, self.window_width))
+      #  palette = QPalette()
+      #  palette.setBrush(QPalette.Window, QBrush(sImage))
+      #  self.setPalette(palette)
+    
+    def resizeEvent(self, *args):
+        palette = QPalette()
+        img = QImage('картинка.jpg')
+        scaled = img.scaled(self.size(), Qt.KeepAspectRatioByExpanding, transformMode = Qt.SmoothTransformation)
+        palette.setBrush(QPalette.Window, QBrush(scaled))
+        self.setPalette(palette)
+        
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
