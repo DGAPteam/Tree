@@ -147,7 +147,7 @@ def ALIGN_NW (x, y):
         y_end += ALIGNy[j]
     power = max(N, M)
 
-    return distance(x_end, y_end), x_end, y_end
+    return x_end, y_end
 
 def FASTA(x, y):
     N, M = len(x), len(y)

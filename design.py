@@ -13,7 +13,7 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(709, 386)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
+        self.centralwidget.setObjectName("centralwidg`et")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
         self.listWidget = QtWidgets.QListWidget(self.centralwidget)
@@ -51,4 +51,3 @@ class Ui_MainWindow(object):
         self.pushButton_4.setText(_translate("MainWindow", "Blast alignment"))
         self.pushButton_5.setText(_translate("MainWindow", "Fasta alignment"))
         self.pushButton_3.setText(_translate("MainWindow", "Needleman-Wunch alignment"))
-
