@@ -1,3 +1,33 @@
+def readseq(Sequences):
+#_input = open('example/input.fas', 'r')
+#Sequences = _input.read()
+#_input.close()
+
+    Seq, names_seq = [], []
+    Seq_inner = []
+    Seq = Sequences.split('>')
+    for i in Seq:
+        Seq_inner.append(i.split('\n'))
+    Seq_inner.remove(Seq_inner[0])
+    sequences = []
+    for i in Seq_inner:
+        s = ''
+        names_seq.append(i[0])
+        for j in range(1,len(i)):
+            s += i[j]
+        sequences.append(s)
+    if len(sequences[0]) > len(sequences[1]):
+        name_seq = names_seq[1]
+        name_seqi = names_seq[0]
+        seq = sequences[1]
+        seqi = sequences[0]
+    else:
+        name_seq = names_seq[0]
+        name_seqi = names_seq[1]
+        seq = sequences[0]
+        seqi = sequences[1]
+    return(seq, seqi)
+
 def distance(a, b): #Левенштейн
     "Calculates the Levenshtein distance between a and b."
     n, m = len(a), len(b)
