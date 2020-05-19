@@ -16,17 +16,17 @@ def readseq(Sequences):
         for j in range(1,len(i)):
             s += i[j]
         sequences.append(s)
-    if len(sequences[0]) > len(sequences[1]):
-        name_seq = names_seq[1]
-        name_seqi = names_seq[0]
-        seq = sequences[1]
-        seqi = sequences[0]
-    else:
-        name_seq = names_seq[0]
-        name_seqi = names_seq[1]
-        seq = sequences[0]
-        seqi = sequences[1]
-    return(seq, seqi)
+    #if len(sequences[0]) > len(sequences[1]):
+    #    name_seq = names_seq[1]
+    #    name_seqi = names_seq[0]
+    #    seq = sequences[1]
+    #    seqi = sequences[0]
+    #else:
+    #    name_seq = names_seq[0]
+    #    name_seqi = names_seq[1]
+    #    seq = sequences[0]
+    #    seqi = sequences[1]
+    return(sequences, names_seq)
 
 def distance(a, b): #Левенштейн
     "Calculates the Levenshtein distance between a and b."
@@ -48,13 +48,13 @@ def distance(a, b): #Левенштейн
     return current_row[n]
 
 def hamming_distance_nw(s1, s2):
-    return sum(ch1 != ch2 and ch1 != '-' and ch2 != '-' for ch1,ch2 in zip(s1,s2))
+    return sum(ch1 != ch2 and ch1 != '-' and ch2 != '-' for ch1,ch2 in zip(s1,s2))/len(s1)
 
 def hamming_distance_fasta(s1, s2):
-    return sum(ch1 != ch2 for ch1,ch2 in zip(s1,s2))
-
+    return sum(ch1 != ch2 for ch1,ch2 in zip(s1,s2))/len(s1)
+    
 def hamming_distance_blast(s1, s2):
-    return sum(ch1 != ch2 for ch1,ch2 in zip(s1,s2))
+    return sum(ch1 != ch2 for ch1,ch2 in zip(s1,s2))/len(s1)
 
 def ALIGN_NW (x, y):
     ALIGNx, ALIGNy = [], []
@@ -147,7 +147,7 @@ def ALIGN_NW (x, y):
         y_end += ALIGNy[j]
     power = max(N, M)
 
-    return x_end, y_end
+    return hamming_distance_nw(x_end, y_end), x_end, y_end
 
 def FASTA(x, y):
     N, M = len(x), len(y)
@@ -262,7 +262,7 @@ def FASTA(x, y):
     if (len(y_end) < len(x_end)):
         while(len(y_end) < len(x_end)):
             y_end += '-'
-    return distance(x_end, y_end), x_end, y_end, k, l
+    return hamming_distance_fasta(x_end, y_end), x_end, y_end
 
 def BLAST (x, y, w):
     ALIGNx, ALIGNy, strings = '', '', []
@@ -362,7 +362,8 @@ def BLAST (x, y, w):
     if (len(y_end) < len(x_end)):
         while(len(y_end) < len(x_end)):
             y_end += '-'
-    return distance(x_end, y_end), x_end, y_end, k, l
+            
+    return hamming_distance_blast(x_end, y_end), x_end, y_end
 
 def GenSearch(x):
     start, end = [], []
