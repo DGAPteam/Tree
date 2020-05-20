@@ -80,64 +80,44 @@ def ALIGN_NW (x, y):
                 d -= 1
             v_put = max(A[i][j - 1] - 2, A[i - 1][j] - 2, d)
             A[i][j] += v_put
-    W[0][0], path[0][0] = A[1][1], 'd'
+
     
-    for i in range(N):
-        for j in range(M):
-            
-            if (i == 0 and j != 0):
-                W[i][j] = W[i][j - 1] + A[i][j]
-                path[i][j] = 'l'
-            
-            if (j == 0 and i != 0):
-                path[i][j] = 'u'
-                W[i][j] = W[i - 1][j] + A[i][j]
-            
-            if (i != 0 and j != 0):
-                s = max(W[i][j - 1], W[i - 1][j], W[i - 1][j - 1])
-                if (s == W[i][j - 1]):
-                    path[i][j] = 'l'
-                if (s == W[i - 1][j]):
-                    path[i][j] = 'u'
-                if (s == W[i - 1][j-1]):
-                    path[i][j] = 'd'
-                W[i][j] = s + A[i][j]
-    
-    i, j = 0, 0
+    i, j = N - 1, M - 1
     ALIGNx.append(x[i])
     ALIGNy.append(y[j])
-    
-    while (i < N - 1 or j < M - 1):
-        if (i < N - 1 and j < M - 1):
-            MAX = max(W[i + 1][j + 1], W[i][j + 1], W[i + 1][j])
             
-            if MAX == W[i + 1][j + 1]:
-                i += 1
-                j += 1
+    while (i > 0 or j > 0):
+        if (i > 0 and j > 0):
+            MAX = max(A[i - 1][j - 1], A[i][j - 1], A[i - 1][j])
+            
+            if MAX == A[i - 1][j - 1]:
+                i -= 1
+                j -= 1
                 ALIGNx.append(x[i])
                 ALIGNy.append(y[j])
+
                 
             else:
-                if MAX == W[i][j + 1]:
-                    j += 1
+                if MAX == A[i][j - 1]:
+                    j -= 1
                     ALIGNx.append('-')
                     ALIGNy.append(y[j])
                 else:
-                    if MAX == W[i + 1][j]:
-                        i += 1
+                    if MAX == A[i - 1][j]:
+                        i -= 1
                         ALIGNx.append(x[i])
                         ALIGNy.append('-')
                         
-        if (i == N - 1 and j != M - 1):
-            j += 1
+        if (i == 0 and j != 0):
+            j -= 1
             ALIGNx.append('-')
             ALIGNy.append(y[j])
             
-        if (j == M - 1 and i != N - 1):
-            i += 1
+        if (j == 0 and i != 0):
+            i -= 1
             ALIGNx.append(x[i])
             ALIGNy.append('-')
-
+            
     x_end, y_end = '', ''
 
     length = max(len(ALIGNx),len(ALIGNy))
@@ -146,7 +126,10 @@ def ALIGN_NW (x, y):
     for j in range(length):
         y_end += ALIGNy[j]
     power = max(N, M)
-
+    
+    x_end = x_end[::-1]
+    y_end = y_end[::-1]
+    
     return hamming_distance_nw(x_end, y_end), x_end, y_end
 
 def FASTA(x, y):
