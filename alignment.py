@@ -170,7 +170,7 @@ def FASTA(x, y):
     
     for i in range(start_x, N):
         for j in range(start_y, M):
-            if A[i][j] >= 5 and (i < N and j < M and A[i+1][j+1] != A[i][j]):
+            if A[i][j] >= 5:
                 index.append([i, j])
                 h += 1
                 start_y = index[h - 1][1] + 1
