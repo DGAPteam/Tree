@@ -48,7 +48,7 @@ def distance(a, b): #Левенштейн
     return current_row[n]
 
 def hamming_distance_nw(s1, s2):
-    return sum(ch1 != ch2 and ch1 != '-' and ch2 != '-' for ch1,ch2 in zip(s1,s2))/len(s1)
+    return sum(ch1 != ch2 for ch1,ch2 in zip(s1,s2))/len(s1)
 
 def hamming_distance_fasta(s1, s2):
     return sum(ch1 != ch2 for ch1,ch2 in zip(s1,s2))/len(s1)
