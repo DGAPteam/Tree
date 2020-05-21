@@ -219,11 +219,11 @@ def FASTA(x, y):
         x_end += ALIGNx[i]
     for j in range(length):
         y_end += ALIGNy[j]
-    power = max(N, M)
-    while(len(x_end) < power):
-        x_end += '-'
-    while(len(y_end) < power):
-        y_end += '-'
+  #  power = max(N, M)
+  #  while(len(x_end) < power):
+  #      x_end += '-'
+  #  while(len(y_end) < power):
+  #      y_end += '-'
     k, l = 0, 0
     for i in x_end:
         if i != '-':
