@@ -12,7 +12,7 @@ from PyQt5.QtCore import QSize, Qt, QEvent
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        MainWindow.setObjectName("Equalizer")
         MainWindow.resize(709, 386)
         
         self.centralwidget = QtWidgets.QWidget(MainWindow)
