@@ -1,4 +1,7 @@
 # Alignment
+The algorithms were implemented by myself and not exactly the same as wiki tells.
+But I kept the main idea the same everywhere, I just modified some parameters. 
+You can find my implementation [here](https://github.com/poolsar42/Tree/blob/master/alignment.py)
 # How to use .ipynb file:
     1. Start project.ipynb in Jupyter Notebook
     2. Chose your file and write it in filename place
